@@ -16,6 +16,12 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "ami" {
+  type        = string
+  description = "AWS Region in which to deploy our instance."
+  default     = "us-east-1"
+}
+
 variable "vpc_cidr" {
   type        = string
   description = "CIDR block for VPC."
@@ -42,24 +48,6 @@ variable "hcp_packer_image_bucket_name" {
 variable "hcp_packer_image_channel" {
   type        = string
   description = "The channel that points to the version of the image you want."
-  default     = ""
-}
-
-# variable "ami_filter" {
-#   type        = string
-#   description = "AMI filter - e.g. ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
-#   default     = "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
-# }
-
-# variable "ami_owner" {
-#   type        = string
-#   description = "Owner of AMI - e.g. Canonical (for Ubuntu images) is 099720109477. RedHat is 309956199498."
-#   default     = "099720109477"
-# }
-
-variable "ami_id" {
-  type        = string
-  description = "Optional AMI ID - use this if not blank string, otherwise use AMI per ami_filter and ami_owner."
   default     = ""
 }
 
@@ -230,3 +218,22 @@ variable "ldap_user_vault_admin" {
   default     = "yash"
 
 }
+
+variable "ami_id" {
+  type        = string
+  description = "Optional AMI ID - use this if not blank string, otherwise use AMI per ami_filter and ami_owner."
+  default     = ""
+}
+
+variable "ami_filter" {
+  type        = string
+  description = "AMI filter - e.g. ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
+  default     = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+}
+
+variable "ami_owner" {
+  type        = string
+  description = "Owner of AMI - e.g. 099720109477"
+  default     = "099720109477"
+}
+
